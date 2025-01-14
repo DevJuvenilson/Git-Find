@@ -162,3 +162,17 @@ root.render(<App />);
   },
 
 13. Dai rodar o comando *yarn start* no terminal
+
+## Criar projeto com REACT CLI
+
+1. npx create-react-app gitfind
+
+2. Limpar tudo que não for útil
+
+3. Criar pasta src/pages e src/components
+
+4. Criar pasta src/pages/home e colocar o arquivo App.js lá dentro e renomear o arquivo para index.js (lembrar de atualizar a importação)
+
+5. Caso queira, pode criar pastas de components que serão utilizados no projeto, como Header, buttons e inputs
+
+6. Criar pasta src/assets
