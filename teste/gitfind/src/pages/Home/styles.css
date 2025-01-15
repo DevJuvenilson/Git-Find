@@ -28,6 +28,7 @@ input {
     background: transparent;
     font-size: 18px;
     padding: 10px;
+    color: #ffffff;
 }
 
 button {
@@ -70,4 +71,11 @@ button {
     color: #999999;
     font-size: 12px;
     margin: 20px 0 0 0;
+}
+
+.repositorio {
+    font-size: 32px;
+    color: #ffffff;
+    text-align: center;
+    margin: 12px 0;
 }
