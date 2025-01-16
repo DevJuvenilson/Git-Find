@@ -176,3 +176,11 @@ root.render(<App />);
 5. Caso queira, pode criar pastas de components que serão utilizados no projeto, como Header, buttons e inputs
 
 6. Criar pasta src/assets
+
+## Criar projeto com REACT CLI E ROUTER DOM
+
+1. npx create-react-app gitfind
+
+2. Limpar tudo que não for útil
+
+3. yarn add react-router-dom (intalar)
