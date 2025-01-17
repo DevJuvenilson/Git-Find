@@ -184,3 +184,11 @@ root.render(<App />);
 2. Limpar tudo que não for útil
 
 3. yarn add react-router-dom (intalar)
+
+## Instalando e configurando STYLED COMPONENTS
+
+1. npx create-react-app gitfind
+
+2. Limpar tudo que não for útil
+
+3. yarn add styled-components (intalar)
