@@ -48,6 +48,10 @@ index.html:
 
 de resto pode apagar tudo
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 ### Outro jeito
 
 Outro jeito é você criar um projeto e depois adicionar o react. Para isso iremos instalar o babel, o yarn, webpack e por fim o react
@@ -163,6 +167,10 @@ root.render(<App />);
 
 13. Dai rodar o comando *yarn start* no terminal
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 ## Criar projeto com REACT CLI
 
 1. npx create-react-app gitfind
@@ -177,6 +185,10 @@ root.render(<App />);
 
 6. Criar pasta src/assets
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 ## Criar projeto com REACT CLI E ROUTER DOM
 
 1. npx create-react-app gitfind
@@ -185,6 +197,10 @@ root.render(<App />);
 
 3. yarn add react-router-dom (intalar)
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 ## Instalando e configurando STYLED COMPONENTS
 
 1. npx create-react-app gitfind
@@ -192,3 +208,134 @@ root.render(<App />);
 2. Limpar tudo que não for útil
 
 3. yarn add styled-components (intalar)
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+## HOOKS BÁSICOS
+
+1. Hook useState:
+
+import { useState } from 'react';
+
+const hookUS = () => {
+
+    const [name, setName] = useState('Daniel');
+
+    const handleChangeName = () => {
+        setName('Juvenilson')
+    }
+
+    return (
+        <div>
+            <p>
+                {name}
+            </p>
+            <button onClick={handleChangeName}>Alterar</button>
+        </div>
+    )
+}
+
+export { hookUS }
+
+Esse hook, como o exemplo mostrar é usado para mudar o estado de um componente. No exemplo acima temos a criação do componente hookUS, logo em seguida a criação de um estado e um que será mudado, depois é declarado o valor inicial que se encontrará, nesse caso, Daniel. Depois disso temos outra função que irá alterar esse estado, entretanto, se essa função nunca for acionada o estado inicial se permanecerá para sempre. Para tanto, iremos adicionar um botão que ao clicar irá alterar o estado inicial 'Daniel' para 'Juvenilson'.
+
+
+2. Hook useEffect:
+
+    useEffect(() => {
+        alert('Renderizei')
+    }, [])
+
+Esse hook irá agir, nesse caso, sempre que a tela renderizar, ou seja, assim que dar reload na página será exibido o alert. Entretanto, ele pode receber dependências para ser executado. Por exemplo:
+
+import { useEffect, useState } from 'react';
+
+const HokUS = () => {
+
+    const [name, setName] = useState('Daniel');
+
+    const handleChangeName = () => {
+        setName('Juvenilson')
+    }
+
+    useEffect(() => {
+        alert('Renderizei')
+    }, [name])
+
+    return (
+        <div>
+            <p>
+                {name}
+            </p>
+            <button onClick={handleChangeName}>Alterar</button>
+        </div>
+    )
+}
+
+export { HokUS }
+
+Observemos que dentro do array após a vírgula foi adicionada a variável "name", ou seja, sempre que ela renderizar novamente, o que estiver dentro das chaves do useEffect será renderizado.
+
+3. Hook useMemo:
+
+    useMemo(() => {
+
+    }, [])
+
+Essa é a sintaxe do useMemo, segue o mesmo padrão do useEffect, o espaço para colocar dependências. O useMemo irá realizar uma ação quando o componente renderizar, porém irá realizar essa ação sempre com o mesmo valor do estado inicial. Por exemplo:
+
+import { useEffect, useMemo, useState } from 'react';
+
+const HokUS = () => {
+
+    const [age, setAge] = useState(17);
+
+    const handleChangeAge = () => {
+        setAge(18)
+    }
+
+    useEffect(() => {
+        alert('Renderizei')
+    }, [age])
+
+    const calculo = useMemo(() => {
+        console.log('Calculou', age);
+        return 10 * age
+    }, [])
+
+    console.log('Renderizou', calculo);
+
+    return (
+        <div>
+            <p>
+                {age}
+            </p>
+            <button onClick={handleChangeAge}>Alterar</button>
+        </div>
+    )
+}
+
+export { HokUS }
+
+A saída desse código será:
+Calculou 17
+Renderizou 170
+
+Caso eu clique no botão e mude a idade para 18, o resultado será a mesma saída pois o useMemo guardou na memória a const age como 17. Entretanto, se eu passar uma dependência:
+
+    const calculo = useMemo(() => {
+        console.log('Calculou', age);
+        return 10 * age
+    }, [age])
+
+Agora ele irá renderizar com a idade que estará sendo modificada pois está sendo guardado na memória sempre que age é modificado.
+
+4. Hook useCallback
+
+useCallback(() => {
+
+}, [])
+
+Mesma lógica do useMemo, porém para resultados de função, isto é, caso uma função em sua primeira vez retornou 260, sempre que essa função for solicitada ela irá continuar retornando 260 (Caso não seja passado nenhum parâmetro)
