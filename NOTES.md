@@ -361,3 +361,28 @@ Mesma lógica do useMemo, porém para resultados de função, isto é, caso uma 
 1. yarn add axios
 
 2. npm i -g json-server
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+## CONVERTENDO PROJETO DE JAVASCRIPT PARA TYPESCRIPT
+
+1. yarn add typescript @types/node @types/react @types/react-dom @types/jest -D
+
+2. npx tsc --init
+
+3. Colocar isso no arquivo tsconfig.json:
+{
+  "compilerOptions": {
+    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "module": "commonjs",                                /* Specify what module code is generated. */
+    "jsx": "react-jsx",               
+    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
+    "strict": true,                                      /* Enable all strict type-checking options. */
+    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+  },
+  "exclude": [
+    "node_modules"
+  ]
+} 
